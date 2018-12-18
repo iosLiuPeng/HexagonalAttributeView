@@ -49,7 +49,7 @@
     
     if (_maxScore <= 0) {
         _maxScore = 5;
-    }
+    }    
 }
 
 - (void)setArrSocre:(NSArray<NSNumber *> *)arrSocre
@@ -70,7 +70,7 @@
  */
 - (CGPoint)calcCircleCoordinateWithCenter:(CGPoint)center andWithAngle:(CGFloat)angle andWithRadius:(CGFloat)radius
 {
-    angle += 180;
+    angle = 360 - angle;
     CGFloat x = radius * cosf(angle / 180 * M_PI);
     CGFloat y = radius * sinf(angle / 180 * M_PI);
     return CGPointMake(center.x + x, center.y - y);
