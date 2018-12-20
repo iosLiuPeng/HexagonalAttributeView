@@ -70,7 +70,6 @@
  */
 - (CGPoint)calcCircleCoordinateWithCenter:(CGPoint)center andWithAngle:(CGFloat)angle andWithRadius:(CGFloat)radius
 {
-    angle = 360 - angle;
     CGFloat x = radius * cosf(angle / 180 * M_PI);
     CGFloat y = radius * sinf(angle / 180 * M_PI);
     return CGPointMake(center.x + x, center.y - y);
@@ -100,8 +99,8 @@
         }
         // 边长
         CGFloat length = width / 2.0 * (socre / _maxScore);
-        // 坐标
-        CGPoint point = [self calcCircleCoordinateWithCenter:center andWithAngle:angle andWithRadius:length];
+        // 坐标 (在iOS中，正值表示逆时针旋转，负值表示顺时针旋转。)
+        CGPoint point = [self calcCircleCoordinateWithCenter:center andWithAngle:-angle andWithRadius:length];
         
         if (i == 0) {
             [path moveToPoint:point];
